@@ -423,10 +423,10 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'lua', 'python', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'java', 'kotlin' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
     -- List of parsers to ignore installing
@@ -664,3 +664,14 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Here starts my configuration.
+-- I won't use <leader>w to save file because that keymap is already in use by the workspace functionality.
+-- And I used to use , as my leader key when I used to use vim, so I'm pretty comfortable with it.
+vim.keymap.set('n', ',w', '<cmd>w<cr><esc>', { desc = 'Save current file.' })
+vim.keymap.set('n', '<leader>wq', '<cmd>wq<cr><esc>', { desc = '[W]rite and [Q]uit.' })
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr><esc>', { desc = '[Q]uit current tab.' })
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr><esc>', { desc = 'Open a [N]ew [T]ab.' })
+vim.keymap.set('n', '<leader>nt', '<cmd>tabnext<cr><esc>', { desc = '[N]ext [T]ab.' })
+vim.keymap.set('n', '<leader>pt', '<cmd>tabprev<cr><esc>', { desc = '[P]revious [T]ab.' })
+vim.keymap.set('n', '<leader>ct', '<cmd>tabclose<cr><esc>', { desc = '[C]lose [T]ab.' })
